@@ -1,134 +1,163 @@
 # 🚗 CarValue Predictor
 
-> Instantly estimate the resale value of any Indian used car using Machine Learning.
+🔗 **Live App:** https://car-value-predictor-syzumzqetpxap4hrcdrtcc.streamlit.app/
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
-
----
-
-## 📁 Project Structure
-
-```
-CarValuePredictor/
-│
-├── app.py                  # Main Streamlit entry point
-├── final_model.pkl         # Trained Decision Tree Regressor
-├── requirements.txt        # Python dependencies
-├── README.md
-│
-├── utils/
-│   ├── __init__.py
-│   ├── styles.py           # Global CSS (dark automotive theme)
-│   ├── model_loader.py     # Cached model loading via pickle
-│   └── encoders.py         # LabelEncoder maps + feature builder
-│
-└── components/
-    ├── __init__.py
-    ├── sidebar.py          # All input widgets
-    ├── hero.py             # Page title + tagline
-    ├── stats.py            # Four quick-stat cards
-    ├── predictor.py        # Input summary + prediction result
-    ├── info.py             # Expandable How-it-works + Feature Guide
-    └── footer.py           # Branded footer
-```
+Instantly estimate the resale value of any used car using Machine Learning.
+Built with a modular architecture and deployed on Streamlit Cloud.
 
 ---
 
-## ☁️ Deploy on Streamlit Cloud (Free — Recommended)
+## 📌 Overview
 
-**Live link milega:** `https://share.streamlit.io/hsachan295-source/Car-Value-Predictor/main/app.py`
+CarValue Predictor is a production-ready ML web application that predicts car resale prices based on multiple real-world features.
 
-### Step 1 — GitHub Pe Push Karo
-Pehle poora project GitHub repo mein upload karo (final_model.pkl bhi saath mein).
-
-```bash
-git add .
-git commit -m "🚗 CarValue Predictor - ready for deployment"
-git push origin main
-```
-
-### Step 2 — Streamlit Cloud Pe Login Karo
-👉 [share.streamlit.io](https://share.streamlit.io) pe jao → **Sign in with GitHub**
-
-### Step 3 — New App Deploy Karo
-1. **"New app"** button click karo
-2. Yeh fields bharo:
-
-| Field | Value |
-|---|---|
-| Repository | `hsachan295-source/Car-Value-Predictor` |
-| Branch | `main` |
-| Main file path | `app.py` |
-
-3. **"Deploy!"** click karo
-
-### Step 4 — Wait Karo (~2-3 minutes)
-Streamlit apne aap:
-- Dependencies install karega (`requirements.txt` se)
-- App build karega
-- Live URL de dega ✅
-
-> ⚠️ **Important:** `final_model.pkl` GitHub repo mein hona **zaroori** hai, tabhi Streamlit Cloud use kar payega.
-
----
-
-## 🚀 Local Setup (Quick Start)
-
-```bash
-# 1. Repo clone karo
-git clone https://github.com/hsachan295-source/Car-Value-Predictor.git
-cd Car-Value-Predictor
-
-# 2. Virtual environment banao (recommended)
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 3. Dependencies install karo
-pip install -r requirements.txt
-
-# 4. App run karo
-streamlit run app.py
-```
-
-App opens at **http://localhost:8501** 🎉
+The model is optimized to reduce overfitting and provide reliable predictions on unseen data.
 
 ---
 
 ## 🧠 Model Details
 
-| Property | Value |
-|---|---|
-| Algorithm | Decision Tree Regressor |
-| Library | scikit-learn |
-| Tuning | RandomizedSearchCV (100 iter, 5-fold CV) |
-| Test R² | ~0.84 |
-| Target | `Selling_Price` (₹ Lakhs) |
-| Features | `Car_Name`, `Year`, `Present_Price`, `Kms_Driven`, `Fuel_Type`, `Seller_Type`, `Transmission`, `Owner` |
-
-### Encoding (mirrors training `LabelEncoder`)
-
-| Feature | Encoding |
-|---|---|
-| Fuel_Type | CNG=0, Diesel=1, Petrol=2 |
-| Seller_Type | Dealer=0, Individual=1 |
-| Transmission | Automatic=0, Manual=1 |
-| Car_Name | Alphabetical index |
+| Property              | Value                   |
+| --------------------- | ----------------------- |
+| Algorithm             | Decision Tree Regressor |
+| Library               | scikit-learn            |
+| Hyperparameter Tuning | GridSearchCV            |
+| Test R² Score         | ~0.84                   |
+| Target                | Selling_Price (₹ Lakhs) |
 
 ---
 
-## ✨ Features
+## ⚙️ Features Used
 
-- **Dark automotive UI** — Bebas Neue + DM Sans, gold accent palette
-- **Sidebar inputs** — all 8 model features with sensible defaults
-- **Live input summary** — see your selections before predicting
-- **Animated result card** — price displayed prominently in ₹ Lakhs
-- **Insight metrics** — depreciation %, vehicle age, value retention
-- **Expandable docs** — how it works + feature guide
-- **Cached model loading** — fast reruns via `@st.cache_resource`
-- **Error handling** — graceful messages for missing file / bad input
+* Present_Price
+* Kms_Driven
+* Owner
+* Fuel_Type
+* Seller_Type
+* Transmission
+* Year
 
 ---
 
-## 👤 Author
+## 🔢 Encoding Strategy
 
-**Harsh Sachan** — CarValue Predictor v1.0
+| Feature      | Encoding                  |
+| ------------ | ------------------------- |
+| Fuel_Type    | CNG=0, Diesel=1, Petrol=2 |
+| Seller_Type  | Dealer=0, Individual=1    |
+| Transmission | Automatic=0, Manual=1     |
+
+---
+
+## 🏗️ Project Structure
+
+```bash id="n7h5b2"
+CarValuePredictor/
+│
+├── app.py
+├── final_model.pkl
+├── requirements.txt
+├── README.md
+│
+├── utils/
+│   ├── __init__.py
+│   ├── styles.py
+│   ├── model_loader.py
+│   └── encoders.py
+│
+└── components/
+    ├── __init__.py
+    ├── sidebar.py
+    ├── hero.py
+    ├── stats.py
+    ├── predictor.py
+    ├── info.py
+    └── footer.py
+```
+
+---
+
+## ✨ Key Features
+
+* 🎨 Modern dark automotive UI
+* ⚡ Fast performance using cached model loading
+* 📊 Insight cards (vehicle age, depreciation, etc.)
+* 🎯 Real-time prediction with clean output
+* 🧩 Modular code structure (components + utils)
+* 📱 Fully responsive Streamlit layout
+
+---
+
+## 🚀 Run Locally
+
+```bash id="p7q4jm"
+git clone https://github.com/hsachan295-source/Car-Value-Predictor.git
+
+cd Car-Value-Predictor
+
+python -m venv venv
+venv\Scripts\activate        # Mac/Linux: source venv/bin/activate
+
+pip install -r requirements.txt
+
+streamlit run app.py
+```
+
+---
+
+## 🌐 Deployment
+
+This project is deployed using **Streamlit Cloud**.
+
+### Steps:
+
+1. Push code to GitHub
+2. Go to https://share.streamlit.io
+3. Select repository
+4. Set:
+
+   * Branch: `main`
+   * File: `app.py`
+5. Click **Deploy**
+
+---
+
+## 📦 Requirements
+
+```txt id="d2k9h1"
+streamlit
+scikit-learn
+pandas
+numpy
+```
+
+---
+
+## ⚠️ Important Notes
+
+* `final_model.pkl` must be present in root directory
+* Feature encoding must match training phase
+* Input order must remain consistent
+
+---
+
+## 💡 Future Improvements
+
+* Add Random Forest / XGBoost model
+* Add model comparison dashboard
+* Integrate real-time car dataset APIs
+* Improve UI with charts & analytics
+
+---
+
+## 👨‍💻 Author
+
+**Harsh Sachan**
+🎓 B.Tech CSE (AI)
+🔗 https://github.com/hsachan295-source
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
