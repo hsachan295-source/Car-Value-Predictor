@@ -2,6 +2,8 @@
 
 > Instantly estimate the resale value of any Indian used car using Machine Learning.
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
+
 ---
 
 ## 📁 Project Structure
@@ -10,7 +12,7 @@
 CarValuePredictor/
 │
 ├── app.py                  # Main Streamlit entry point
-├── final_model.pkl         # Trained Decision Tree Regressor  ← YOU PROVIDE THIS
+├── final_model.pkl         # Trained Decision Tree Regressor
 ├── requirements.txt        # Python dependencies
 ├── README.md
 │
@@ -32,27 +34,63 @@ CarValuePredictor/
 
 ---
 
-## 🚀 Quick Start
+## ☁️ Deploy on Streamlit Cloud (Free — Recommended)
+
+**Live link milega:** `https://share.streamlit.io/hsachan295-source/Car-Value-Predictor/main/app.py`
+
+### Step 1 — GitHub Pe Push Karo
+Pehle poora project GitHub repo mein upload karo (final_model.pkl bhi saath mein).
 
 ```bash
-# 1. Clone / unzip the project
-cd CarValuePredictor
+git add .
+git commit -m "🚗 CarValue Predictor - ready for deployment"
+git push origin main
+```
 
-# 2. (Recommended) create a virtual environment
+### Step 2 — Streamlit Cloud Pe Login Karo
+👉 [share.streamlit.io](https://share.streamlit.io) pe jao → **Sign in with GitHub**
+
+### Step 3 — New App Deploy Karo
+1. **"New app"** button click karo
+2. Yeh fields bharo:
+
+| Field | Value |
+|---|---|
+| Repository | `hsachan295-source/Car-Value-Predictor` |
+| Branch | `main` |
+| Main file path | `app.py` |
+
+3. **"Deploy!"** click karo
+
+### Step 4 — Wait Karo (~2-3 minutes)
+Streamlit apne aap:
+- Dependencies install karega (`requirements.txt` se)
+- App build karega
+- Live URL de dega ✅
+
+> ⚠️ **Important:** `final_model.pkl` GitHub repo mein hona **zaroori** hai, tabhi Streamlit Cloud use kar payega.
+
+---
+
+## 🚀 Local Setup (Quick Start)
+
+```bash
+# 1. Repo clone karo
+git clone https://github.com/hsachan295-source/Car-Value-Predictor.git
+cd Car-Value-Predictor
+
+# 2. Virtual environment banao (recommended)
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 
-# 3. Install dependencies
+# 3. Dependencies install karo
 pip install -r requirements.txt
 
-# 4. Place your trained model in the root folder
-cp /path/to/final_model.pkl .
-
-# 5. Run the app
+# 4. App run karo
 streamlit run app.py
 ```
 
-The app opens at **http://localhost:8501** in your browser.
+App opens at **http://localhost:8501** 🎉
 
 ---
 
